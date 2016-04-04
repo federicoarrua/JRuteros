@@ -1,0 +1,16 @@
+package enumJruteros;
+
+public enum Actividad {
+	MOUNTAINBIKE,
+	CICLISMO,
+	CICLOTURISMO,
+	SENDERISMO,
+	CARRERA,
+	ALPINISMO,
+	MOTOCICLISMO,
+	CUATRICICLO,
+	ESQUÍ,
+	KAYAC,
+	VELA,
+	CABALLO
+}

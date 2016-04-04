@@ -1,0 +1,5 @@
+admin,0,admin,admin,domicilio1,1/1/1990,admin@mail.com,admin,M,ADMIN
+user1,1,apellido1,nombre1,domicilio1,1/1/1990,user1@mail.com,contra1,M,REGULAR
+user2,2,apellido2,nombre2,domicilio2,2/2/1990,user2@mail.com,contra2,M,REGULAR
+user3,3,apellido3,nombre3,domicilio3,3/3/1990,user3@mail.com,contra3,F,REGULAR
+user4,4,apellido4,nombre4,domicilio4,4/4/1990,user4@mail.com,contra4,F,REGULAR
