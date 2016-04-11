@@ -14,10 +14,30 @@ public class Ruta {
 	private Formato formato;
 	private Float distancia;
 	private Dificultad dificultad;
-	private Actividad actividad;
+	private String actividad;
 	private Time tiempoEstimado;
 	private Date fecha;
+	private Usuario dueño;
 	//Fotos del recorrido
+	
+	public Ruta(){
+		super();
+	}
+	
+	public Ruta(String nombre, String descripcion, Privacidad priv, Formato formato, Float distancia,
+			Dificultad dificultad, String actividad, Time tiempoEstimado, Date fecha) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.priv = priv;
+		this.formato = formato;
+		this.distancia = distancia;
+		this.dificultad = dificultad;
+		this.actividad = actividad;
+		this.tiempoEstimado = tiempoEstimado;
+		this.fecha = fecha;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -42,10 +62,10 @@ public class Ruta {
 	public void setTiempoEstimado(Time tiempoEstimado) {
 		this.tiempoEstimado = tiempoEstimado;
 	}
-	public Actividad getActividad() {
+	public String getActividad() {
 		return actividad;
 	}
-	public void setActividad(Actividad actividad) {
+	public void setActividad(String actividad) {
 		this.actividad = actividad;
 	}
 	public Dificultad getDificultad() {
@@ -71,6 +91,14 @@ public class Ruta {
 	}
 	public void setPriv(Privacidad priv) {
 		this.priv = priv;
+	}
+
+	public Usuario getDueño() {
+		return dueño;
+	}
+
+	public void setDueño(Usuario dueño) {
+		this.dueño = dueño;
 	}
 	
 	

@@ -1,6 +1,16 @@
 package enumJruteros;
 
 public enum Formato {
-
-	ida,circular
+	IDA("Ida"),
+	CIRCULAR("Circular");
+	
+	private final String text;
+	
+	private Formato(final String text){
+		this.text = text;
+	}
+	
+	public String toString(){
+		return text;
+	}
 }

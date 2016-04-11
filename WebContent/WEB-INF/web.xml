@@ -10,10 +10,18 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>usuarios</param-name>
-  	<param-value>/WEB-INF/recursos/usuarios.txt</param-value>
+    <param-name>usuarios</param-name>
+    <param-value>/WEB-INF/recursos/usuarios.txt</param-value>
+  </context-param>
+  <context-param>
+    <param-name>actividades</param-name>
+    <param-value>/WEB-INF/recursos/actividades.txt</param-value>
+  </context-param>
+  <context-param>
+    <param-name>rutas</param-name>
+    <param-value>/WEB-INF/recursos/rutas.txt</param-value>
   </context-param>
   <listener>
-  	<listener-class>listeners.CargarUsuarios</listener-class>
+    <listener-class>listeners.CargarDatos</listener-class>
   </listener>
 </web-app>

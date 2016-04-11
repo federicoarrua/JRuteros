@@ -6,7 +6,7 @@ import enumJruteros.Genero;
 import enumJruteros.TiposUsuario;
 
 public class Usuario {
-	
+
 	private String username;
 	private Integer dni;
 	private String apellido;
@@ -18,6 +18,39 @@ public class Usuario {
 	private Genero sexo;
 	private TiposUsuario tipo;
 	
+	public Usuario(String username, Integer dni, String apellido, String nombres, String domicilio, Date fechaNac,
+			String email, String password, Genero sexo, TiposUsuario tipo) {
+		super();
+		this.username = username;
+		this.dni = dni;
+		this.apellido = apellido;
+		this.nombres = nombres;
+		this.domicilio = domicilio;
+		this.fechaNac = fechaNac;
+		this.email = email;
+		this.password = password;
+		this.sexo = sexo;
+		this.tipo = tipo;
+	}
+	
+	public Usuario(Usuario u) {
+		super();
+		this.username = u.getUsername();
+		this.dni = u.getDni();
+		this.apellido = u.getApellido();
+		this.nombres = u.getNombres();
+		this.domicilio = u.getDomicilio();
+		this.fechaNac = u.getFechaNac();
+		this.email = u.getEmail();
+		this.password = u.getPassword();
+		this.sexo = u.getSexo();
+		this.tipo = u.getTipo();
+	}
+
+	public Usuario() {
+		super();
+	}
+
 	public String getUsername() {
 		return username;
 	}
