@@ -11,30 +11,30 @@
 <body background="images/background.jpg">
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>
 	<div class="col-md-8">
-		<table class="table">
+		<table class="table table-condensed">
 			<thead>
 				<tr>
-					<td>Usuario</td>
-					<td>Criterio 1</td>
-					<td>Criterio 2</td>
-					<td>Habilitar/Deshabilitar</td>
+					<td class="text-center">Usuario</td>
+					<td class="text-center">Rutas subidas</td>
+					<td class="text-center">Rutas recorridas</td>
+					<td class="text-center">Habilitar/Deshabilitar</td>
 				</tr>
 			</thead>
 			<tbody>
 				<% HashMap<String,Usuario> usuarios = (HashMap<String,Usuario>)application.getAttribute("usuarios"); %>
 				<% for(String key : usuarios.keySet()) { %>
 					<tr>
-						<td><%= key %></td>
-						<td></td>
-						<td></td>
-						<td><button class="btn btn-warning">Deshabilitar</button></td>
+						<td class="text-center"><%= key %></td>
+						<td class="text-center">1</td>
+						<td class="text-center">1</td>
+						<td class="text-center"><button class="btn btn-xs btn-warning">Deshabilitar</button></td>
 					</tr>
 				<% } %>
 					<tr>
-						<td>user5</td>
-						<td></td>
-						<td></td>
-						<td><button class="btn btn-default">Habilitar</button></td>
+						<td class="text-center">user5</td>
+						<td class="text-center">1</td>
+						<td class="text-center">2</td>
+						<td class="text-center"><button class="btn btn-xs btn-default">Habilitar</button></td>
 					</tr>
 			</tbody>
 		</table>

@@ -55,7 +55,7 @@ public class RegUsr extends HttpServlet {
 			HttpSession sesion = request.getSession(true);
 			sesion.setAttribute("usuario", u);
 			usuarios.put(u.getUsername(), u);
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("inicio");
 		}
 		else{
 			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/index.jsp");

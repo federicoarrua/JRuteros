@@ -16,7 +16,8 @@
 	    </div>
 	    
 	    <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+	    <li ><a href="inicio">Inicio</a></li>
+        <li class="dropdown ">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= u.getNombres() %> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Modificar Datos</a></li>

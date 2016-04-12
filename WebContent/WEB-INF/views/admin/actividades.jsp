@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>JRuteros-Usuarios</title>
+	<title>JRuteros-Actividades</title>
 	<%@ include file="/WEB-INF/layouts/dependencies.html" %>
 	<%@ page import="java.util.ArrayList" %>
 </head>
@@ -21,13 +21,13 @@
 		</div>
 		<br>
 		<h3>Lista de actividades</h3>
-		<table class="table">
+		<table class="table table-condensed">
 			<thead>
 				<tr>
 					<td>Actividad</td>
-					<td>Editar</td>
-					<td>Habilitar/Deshabilitar</td>
-					<td>Dar de baja</td>
+					<td class="text-center">Editar</td>
+					<td class="text-center">Habilitar/Deshabilitar</td>
+					<td class="text-center">Dar de baja</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -35,9 +35,9 @@
 				<% for(int i=0; i<actividades.size() ; i++) { %>
 					<tr>
 						<td><%= actividades.get(i) %></td>
-						<td><button class="btn btn-sm btn-default">Editar</button></td>
-						<td><button class="btn btn-sm btn-warning">Deshabilitar</button></td>
-						<td><button class="btn btn-sm btn-danger">Eliminar</button></td>
+						<td class="text-center"><button class="btn btn-xs btn-default">Editar</button></td>
+						<td class="text-center"><button class="btn btn-xs btn-warning">Deshabilitar</button></td>
+						<td class="text-center"><button class="btn btn-xs btn-danger">Eliminar</button></td>
 					</tr>
 				<% } %>
 			</tbody>

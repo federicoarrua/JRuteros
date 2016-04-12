@@ -9,5 +9,17 @@
 </head>
 <body background="images/background.jpg">
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>
+	<div class="col-md-8">
+		<h1>Bienvenido a JRuteros!</h1>
+		
+		<table class="table">
+			<thead><tr><td><h4>Ultimas actualizaciones</h4></td></tr></thead>
+			<tbody>	
+				<tr><td>14:03 -- El usuario user1 recorrió la ruta ruta1</td></tr>
+				<tr><td>10:20 -- El usuario admin subió la ruta ruta1</td></tr>
+				<tr><td>09:45 -- El usuario user3 recorrió la ruta ruta3</td></tr>
+			</tbody>
+		</table>
+	</div>
 </body>
 </html>

@@ -3,9 +3,10 @@
 	<meta charset="UTF-8">
 	<%@ include file="/WEB-INF/layouts/dependencies.html" %>
 	<title>JRuteros</title>
-	<script>
+	<link rel="shortcut icon" href="/images/Solo chico2.ico">
+	<script> //Script para el datepicker
 	    $(document).ready(function(){
-	        var date_input=$('input[name="date"]'); //our date input has the name "date"
+	        var date_input=$('input[name="date"]'); 
 	        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
 	        date_input.datepicker({
 	            format: 'mm/dd/yyyy',

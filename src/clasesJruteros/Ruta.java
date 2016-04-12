@@ -5,6 +5,13 @@ import java.util.Date;
 
 import enumJruteros.*;
 
+/**
+ * Ruta: clase Ruta según especificación del proyecto.
+ * Falta implementación del guardado de archivos .kml y fotos
+ * de la ruta.
+ * @author root
+ *
+ */
 public class Ruta {
 	
 	private String nombre;

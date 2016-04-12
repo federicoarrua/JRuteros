@@ -17,7 +17,7 @@
 		  <div class="form-group">
 		    <input type="text" class="form-control" placeholder="Buscar por criterio...">
 		  </div>
-		  <select name="criterio" required>
+		  <select class="form-control" name="criterio" required>
 		  	  <option value="">--Criterio--</option>
 	          <option value="nombre">Nombre</option>
 	          <option value="actividad">Actividad</option>
@@ -27,15 +27,15 @@
 		  <button type="submit" class="btn btn-default">Buscar</button>
 		</form>
 		<br><br>
-		<table class="table">
+		<table class="table table-condensed">
 			<thead>
 				<tr>
 					<td>Ruta</td>
-					<td>Tipo de actividad</td>
-					<td>Tiempo Estimado</td>
-					<td>Dificultad</td>
-					<td>Formato</td>
-					<td>Distancia</td>
+					<td class="text-center">Tipo de actividad</td>
+					<td class="text-center">Tiempo Estimado</td>
+					<td class="text-center">Dificultad</td>
+					<td class="text-center">Formato</td>
+					<td class="text-center">Distancia</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -44,11 +44,11 @@
 					<tr>
 						<% Ruta r = rutas.get(key); %>
 						<td><a href="mostrarruta?ruta=<%= r.getNombre() %>"><%= r.getNombre() %></a></td>
-						<td><%= r.getActividad()%></td>
-						<td><%= r.getTiempoEstimado().toString() %></td>
-						<td><%= r.getDificultad().toString() %></td>
-						<td><%= r.getFormato().toString() %></td>
-						<td><%= r.getDistancia() %> KM</td>
+						<td class="text-center"><%= r.getActividad()%></td>
+						<td class="text-center"><%= r.getTiempoEstimado().toString() %></td>
+						<td class="text-center"><%= r.getDificultad().toString() %></td>
+						<td class="text-center"><%= r.getFormato().toString() %></td>
+						<td class="text-center"><%= r.getDistancia() %> KM</td>
 					</tr>
 				<% } %>
 

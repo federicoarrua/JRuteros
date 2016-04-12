@@ -49,6 +49,11 @@ public class CargarDatos implements ServletContextListener {
 		this.cargarRutas(contexto);
     }
     
+    /**
+     * Carga los usuarios del archivo usuarios.txt.
+     * Si no puede cargarlos hace logging del error.
+     * @param contexto
+     */
     private void cargarUsuarios(ServletContext contexto){
 		 try{
 			 InputStream usuarios = contexto.getResourceAsStream(contexto.getInitParameter("usuarios"));
@@ -82,6 +87,11 @@ public class CargarDatos implements ServletContextListener {
 		 }
     }
     
+    /**
+     * Carga los tipos de actividades del archivo actividades.txt.
+     * Si no puede cargarlas hace logging del error.
+     * @param contexto
+     */
     private void cargarActividades(ServletContext contexto){
     	try{
 			 InputStream actividadesFile = contexto.getResourceAsStream(contexto.getInitParameter("actividades"));
@@ -99,6 +109,11 @@ public class CargarDatos implements ServletContextListener {
     	}
     }
     
+    /**
+     * Carga rutas por defecto del archivo rutas.txt.
+     * Si no puede cargarlas hace logging del error.
+     * @param contexto
+     */
     private void cargarRutas(ServletContext contexto){
 		 try{
 			 InputStream rutas = contexto.getResourceAsStream(contexto.getInitParameter("rutas"));

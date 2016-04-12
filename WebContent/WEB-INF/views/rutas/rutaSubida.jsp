@@ -6,7 +6,7 @@
 	<%@ include file="/WEB-INF/layouts/dependencies.html" %>
 	<%@ page import="enumJruteros.*" %>
 	<%@ page import="java.util.ArrayList" %>
-	<title>JRuteros - Subir ruta</title>
+	<title>JRuteros </title>
 </head>
 <body background="images/background.jpg">
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>

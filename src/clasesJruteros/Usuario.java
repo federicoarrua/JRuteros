@@ -5,6 +5,11 @@ import java.util.Date;
 import enumJruteros.Genero;
 import enumJruteros.TiposUsuario;
 
+/**
+ * Usuario: clase Usuario según la especificación del sistema.
+ * @author root
+ *
+ */
 public class Usuario {
 
 	private String username;

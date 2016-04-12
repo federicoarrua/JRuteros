@@ -3,8 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+	<% Ruta r = (Ruta) request.getAttribute("ruta"); %>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>JRuteros-Estadisticas</title>
+	<title>JRuteros-<%= r.getNombre() %></title>
 	<%@ include file="/WEB-INF/layouts/dependencies.html" %>
 	<%@ page import="clasesJruteros.Ruta" %>
 	<%@ page import="java.text.SimpleDateFormat" %>
@@ -13,7 +14,6 @@
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>
 	<div class="col-md-8">
 		<div class="panel panel-default">
-			<% Ruta r = (Ruta) request.getAttribute("ruta"); %>
 			<% SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy"); %>
 			
 			<div class="panel-heading">IMAGENES DE LA RUTA <%=r.getNombre() %> </div>
