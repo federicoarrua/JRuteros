@@ -33,7 +33,7 @@
 	      </a>
 	    </div>
 	    
-	    <form class="navbar-right navbar-form" role="login" action="/jruteros/loginusr" method="POST">
+	    <form class="navbar-right navbar-form" role="login" action="loginusr" method="POST">
 	    	
 	    	<% if(request.getAttribute("errorLogin") == null){ %>
 		    	<div class="form-group">
@@ -54,7 +54,7 @@
 	<div class="col-md-6">
 	      <img src="images/Solo.png">
 	      <p>JRuteros es un proyecto creado para unir viajeros de todas partes.</p>
-	      <p>Permite a sususuarios encontrar, subir y compartir rutas al aire libre</p>
+	      <p>Permite a sus usuarios encontrar, subir y compartir rutas al aire libre</p>
 	</div>
 	
 	<div class="col-md-6">
