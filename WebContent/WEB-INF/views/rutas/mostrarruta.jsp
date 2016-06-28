@@ -18,7 +18,9 @@
 			
 			<div class="panel-heading">IMAGENES DE LA RUTA <%=r.getNombre() %> </div>
 			<div class="panel-body">
-				<a href="#">Marcar ruta como hecha</a>
+				<% if(u.getUsername() != r.getDueno().getUsername()){ %>
+					<a href="#">Marcar ruta como hecha</a>
+				<% } %>
 				<p>Descripción: <%= r.getDescripcion() %></p>
 				<div class="col-sm-6">
 					<p>Actividad: <%= r.getActividad() %></p>
@@ -27,24 +29,26 @@
 					<p>Tiempo estimado de realizacion: <%= r.getTiempoEstimado().toString() %></p>
 				</div>
 					<p>Fecha de realización: <%= format.format(r.getFecha()) %></p>
-					<p>Usuario que subió la ruta: <%= r.getDueño().getUsername() %></p>
+					<p>Usuario que subió la ruta: <%= r.getDueno().getUsername() %></p>
 					<p>Puntaje promedio: 3.5</p>
 					<p>Usuarios que hicieron esta ruta: 10</p>
 				<div class="col-sm-6">
-				<form class="form-inline" action="#">
-					<div class="form-group input-group">
-						<select class="form-control" required>
-							<option value="">--Valorar--</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-						<span class="input-group-btn" style="width:4px;"></span>
-					</div>
-					<button type="submit" class="btn btn-default">Valorar</button>
-				</form>
+				<% if(u.getUsername() != r.getDueno().getUsername()){ %>
+					<form class="form-inline" action="#">
+						<div class="form-group input-group">
+							<select class="form-control" required>
+								<option value="">--Valorar--</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>
+							<span class="input-group-btn" style="width:4px;"></span>
+						</div>
+						<button type="submit" class="btn btn-default">Valorar</button>
+					</form>
+				<% } %>
 				</div>
 			</div>
 		</div>

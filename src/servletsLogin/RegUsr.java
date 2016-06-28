@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import clasesJruteros.Usuario;
-import enumJruteros.TiposUsuario;
 
 /**
  * Servlet implementation class RegUsr
@@ -50,12 +49,12 @@ public class RegUsr extends HttpServlet {
 			u.setDni(Integer.parseInt(request.getParameter("dni")));
 			u.setNombres(request.getParameter("nombre"));
 			u.setDomicilio(request.getParameter("domicilio"));
-			u.setTipo(TiposUsuario.REGULAR);
 			u.setPassword("123456");
 			HttpSession sesion = request.getSession(true);
 			sesion.setAttribute("usuario", u);
 			usuarios.put(u.getUsername(), u);
-			response.sendRedirect("inicio");
+			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/registroExitoso.jsp");
+			rd.forward(request, response);
 		}
 		else{
 			RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/index.jsp");

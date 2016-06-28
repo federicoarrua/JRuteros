@@ -6,29 +6,38 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>JRuteros-Mis Rutas</title>
 	<%@ include file="/WEB-INF/layouts/dependencies.html" %>
+	<%@ include file="/WEB-INF/layouts/dataTables.html" %>
 	<%@ page import="java.util.ArrayList" %>
 	<%@ page import="clasesJruteros.Ruta" %>
 	<%@ page import="java.sql.Time" %>
 </head>
 <body background="images/background.jpg">
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>
-	<div class="col-md-8">
+	<div class="col-md-10">
 		<h3>Mis Rutas</h3>
 		<form class="navbar-form navbar-left" action="#" role="buscar">
 		  <div class="form-group">
-		    <input type="text" class="form-control" placeholder="Buscar por criterio...">
+		    <input type="nombe" class="form-control" placeholder="Filtrar por nombre..">
 		  </div>
-		  <select class="form-control" name="criterio" required>
-		  	  <option value="">--Criterio--</option>
-	          <option value="nombre">Nombre</option>
-	          <option value="actividad">Actividad</option>
-	          <option value="distancia">Distancia</option>
-			  <option value="tiempo">Tiempo</option>	
-		  </select>
+		  <div class="form-group">
+		    <input type="distancia" class="form-control" placeholder="Filtrar por distancia..">
+		  </div>
+		  <div class="form-group">
+		    <input type="tiempo" class="form-control" placeholder="Filtar por tiempo..">
+		  </div>
+		  <div class="form-group">
+				<select class="form-control" name="actividad">
+					<option value="">--Filtrar por actividad--</option>
+					<% ArrayList<String> acts = (ArrayList<String>)application.getAttribute("actividades"); %>
+					<% for(int i=0;i<acts.size();i++){ %>
+						<option value="<%= acts.get(i)%>"><%= acts.get(i) %></option>
+					<% } %>
+				</select>
+			</div>
 		  <button type="submit" class="btn btn-default">Buscar</button>
 		</form>
 		<br><br>
-		<table class="table table-condensed">
+		<table id="sort" class="table table-condensed">
 			<thead>
 				<tr>
 					<td>Ruta</td>
@@ -36,9 +45,9 @@
 					<td class="text-center">Tiempo Estimado</td>
 					<td class="text-center">Dificultad</td>
 					<td class="text-center">Formato</td>
-					<td class="text-center">Distancia</td>
-					<td class="text-center">Editar</td>
-					<td class="text-center">Eliminar</td>
+					<td data-sortable="false" class="text-center">Distancia</td>
+					<td data-sortable="false" class="text-center">Editar</td>
+					<td data-sortable="false" class="text-center">Eliminar</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -52,7 +61,7 @@
 						<td class="text-center"><%= r.getDificultad().toString() %></td>
 						<td class="text-center"><%= r.getFormato().toString() %></td>
 						<td class="text-center"><%= r.getDistancia() %> KM</td>
-						<td class="text-center"><button class="btn btn-sm btn-primary">Editar</button></td>
+						<td class="text-center"><a href="editarRuta.jsp?nombre=<%= r.getNombre() %>"><button class="btn btn-sm btn-primary">Editar</button></a></td>
 						<td class="text-center"><button class="btn btn-sm btn-danger">Eliminar</button></td>
 					</tr>
 				<% } %>

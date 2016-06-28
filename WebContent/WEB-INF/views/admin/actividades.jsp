@@ -34,7 +34,7 @@
 				<% ArrayList<String> actividades = (ArrayList<String>)application.getAttribute("actividades"); %>
 				<% for(int i=0; i<actividades.size() ; i++) { %>
 					<tr>
-						<td><%= actividades.get(i) %></td>
+						<td><input type="text" value="<%= actividades.get(i) %>"></input></td>
 						<td class="text-center"><button class="btn btn-xs btn-default">Editar</button></td>
 						<td class="text-center"><button class="btn btn-xs btn-warning">Deshabilitar</button></td>
 						<td class="text-center"><button class="btn btn-xs btn-danger">Eliminar</button></td>

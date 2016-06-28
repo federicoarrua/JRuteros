@@ -1,48 +1,129 @@
 package clasesJruteros;
 
-import java.sql.Time;
+import java.awt.image.BufferedImage;
+import java.util.List;
 import java.util.Date;
+import java.sql.Time;
+
+import javax.persistence.*;
 
 import enumJruteros.*;
 
 /**
  * Ruta: clase Ruta según especificación del proyecto.
- * Falta implementación del guardado de archivos .kml y fotos
- * de la ruta.
- * @author root
+ * @author Federico Arrúa.
  *
  */
-public class Ruta {
+@SuppressWarnings("serial")
+@Entity
+@Table(name="ruta")
+public class Ruta implements java.io.Serializable{
 	
+	@Id@GeneratedValue
+	@Column(name="ruta_id")
+	private Long Id;
+	
+	@Column(nullable=false)
 	private String nombre;
-	private String descripcion;
-	private Privacidad priv;
-	//Recorrido keyhole markup language
-	private Formato formato;
-	private Float distancia;
-	private Dificultad dificultad;
-	private String actividad;
-	private Time tiempoEstimado;
-	private Date fecha;
-	private Usuario dueño;
-	//Fotos del recorrido
 	
-	public Ruta(){
-		super();
+	@Column(nullable=false)
+	private String descripcion;
+	
+	@Column(nullable=false)
+	@Enumerated(EnumType.STRING)
+	private Privacidad priv;
+	
+	@Column(nullable=false)
+	@Enumerated(EnumType.STRING)
+	private Formato formato;
+	
+	@Column(nullable=false)
+	private Float distancia;
+	
+	@Column(nullable=false)
+	@Enumerated(EnumType.STRING)
+	private Dificultad dificultad;
+	
+	@Column(nullable=false)
+	private Time tiempoEstimado;
+	
+	@Column(nullable=false)
+	private Date fecha;
+	
+	private Float valoración;
+	
+	private Float cantPuntuadores;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="usuario_id")
+	private Usuario dueno;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name="actividad_id")
+	private Actividad actividad;
+	
+	@OneToMany(cascade=CascadeType.REMOVE)
+	@JoinTable(name="ruta_imagen",
+		joinColumns=@JoinColumn(name="ruta_id"),
+		inverseJoinColumns=@JoinColumn(name="imagen_id")
+			)
+	private List<Imagen> imagenesRuta;
+	
+	@OneToMany(cascade=CascadeType.REMOVE)
+	@JoinTable(name="ruta_punto",
+		joinColumns=@JoinColumn(name="ruta_id"),
+		inverseJoinColumns=@JoinColumn(name="punto_id")
+			)
+	private List<Punto> puntosRecorrido;
+	
+	public Ruta(){}
+	
+	/**
+	 * Recorre el archivo al cual apunta la url del atributo 'recorrido'
+	 * y vuelca los puntos del archivo en una lista de puntos.
+	 * @return
+	 */
+	public Boolean volcarPuntos(){
+		return true;
 	}
 	
-	public Ruta(String nombre, String descripcion, Privacidad priv, Formato formato, Float distancia,
-			Dificultad dificultad, String actividad, Time tiempoEstimado, Date fecha) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.priv = priv;
-		this.formato = formato;
-		this.distancia = distancia;
-		this.dificultad = dificultad;
-		this.actividad = actividad;
-		this.tiempoEstimado = tiempoEstimado;
-		this.fecha = fecha;
+	/**
+	 * Agrega un punto al arreglo de puntos del recorrido puntosRecorrido.
+	 * En caso de no poder retorna false.
+	 * @return
+	 */
+	public Boolean agregarPunto(Float latitud, Float longitud){
+		return true;
+	}
+	
+	/**
+	 * Elimina el punto con esa latitud y esa longitud del arreglo de 
+	 * puntos del recorrido.
+	 * Si el punto no está retorna false.
+	 * @return
+	 */
+	public Boolean eliminarPunto(Float latitud, Float longitud){
+		return true;
+	}
+	
+	/**
+	 * Agrega una imagen al arreglo con el archivo y nombre pasados por 
+	 * parámetro.
+	 * Retorna true si la agrego correctamente, false caso contrario o si
+	 * el nombre está repetido.
+	 * @return
+	 */
+	public Boolean agregarImagen(BufferedImage archivo, String nombre){
+		return true;
+	}
+	
+	/**
+	 * Elimina la imagen con el nombre pasado por parámetro.
+	 * Retorna false si no pudo eliminarla o si no hay ninguna con ese nombre
+	 * @return
+	 */
+	public Boolean eliminarImagen(String nombre){
+		return true;
 	}
 	
 	public String getNombre() {
@@ -69,10 +150,10 @@ public class Ruta {
 	public void setTiempoEstimado(Time tiempoEstimado) {
 		this.tiempoEstimado = tiempoEstimado;
 	}
-	public String getActividad() {
+	public Actividad getActividad() {
 		return actividad;
 	}
-	public void setActividad(String actividad) {
+	public void setActividad(Actividad actividad) {
 		this.actividad = actividad;
 	}
 	public Dificultad getDificultad() {
@@ -100,12 +181,48 @@ public class Ruta {
 		this.priv = priv;
 	}
 
-	public Usuario getDueño() {
-		return dueño;
+	public Usuario getDueno() {
+		return dueno;
 	}
 
-	public void setDueño(Usuario dueño) {
-		this.dueño = dueño;
+	public void setDueño(Usuario dueno) {
+		this.dueno = dueno;
+	}
+	public List<Punto> getPuntosRecorrido() {
+		return puntosRecorrido;
+	}
+	public void setPuntosRecorrido(List<Punto> puntosRecorrido) {
+		this.puntosRecorrido = puntosRecorrido;
+	}
+	public List<Imagen> getImagenesRuta() {
+		return imagenesRuta;
+	}
+	public void setImagenesRuta(List<Imagen> imagenesRuta) {
+		this.imagenesRuta = imagenesRuta;
+	}
+
+	public Float getValoración() {
+		return valoración;
+	}
+
+	public void setValoración(Float valoración) {
+		this.valoración = valoración;
+	}
+
+	public Float getCantPuntuadores() {
+		return cantPuntuadores;
+	}
+
+	public void setCantPuntuadores(Float cantPuntuadores) {
+		this.cantPuntuadores = cantPuntuadores;
+	}
+	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
 	}
 	
 	

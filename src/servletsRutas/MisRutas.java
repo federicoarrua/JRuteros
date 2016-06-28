@@ -39,7 +39,7 @@ public class MisRutas extends HttpServlet {
 			HashMap<String,Ruta> rutas = (HashMap<String,Ruta>) this.getServletContext().getAttribute("rutas");
 			ArrayList<Ruta> arreglo = new ArrayList<Ruta>();
 			for(String r : rutas.keySet()){
-				if(rutas.get(r).getDueño().getUsername() == usuario.getUsername()){
+				if(rutas.get(r).getDueno().getUsername() == usuario.getUsername()){
 					arreglo.add(rutas.get(r));
 				}
 			}

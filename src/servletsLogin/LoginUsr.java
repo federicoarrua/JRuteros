@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import clasesJruteros.Usuario;
-import enumJruteros.TiposUsuario;
 
 /**
  * Servlet implementation class LoginUsr
@@ -51,8 +50,6 @@ public class LoginUsr extends HttpServlet {
 			if(u.getPassword().equals(password)){
 				HttpSession sesion = request.getSession(true);
 				sesion.setAttribute("usuario", u);
-				if(u.getTipo() == TiposUsuario.ADMIN)
-					sesion.setAttribute("admin", true);
 				rd = this.getServletContext().getRequestDispatcher("/WEB-INF/views/loggedIndex.jsp");
 				rd.forward(request, response);
 			}

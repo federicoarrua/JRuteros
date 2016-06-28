@@ -7,18 +7,6 @@
 	<%@ page import="enumJruteros.*" %>
 	<%@ page import="java.util.ArrayList" %>
 	<title>JRuteros - Subir ruta</title>
-	<script>
-	    $(document).ready(function(){
-	        var date_input=$('input[name="date"]'); //our date input has the name "date"
-	        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-	        date_input.datepicker({
-	            format: 'mm/dd/yyyy',
-	            container: container,
-	            todayHighlight: true,
-	            autoclose: true,
-	        })
-	    })
-	</script>
 </head>
 <body background="images/background.jpg">
 	<%@ include file="/WEB-INF/layouts/loggedMenus.jsp" %>

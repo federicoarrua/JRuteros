@@ -32,11 +32,11 @@
 
 <div class="col-md-2 col-xs-3 list-group">
  
-	<a class="list-group-item" href="listarrutas">Buscar Rutas</a>
-	<a class="list-group-item" href="misrutas">Mis Rutas</a>
-	<a class="list-group-item" href="subirRuta">Subir Ruta</a>
-	
-	<% if(request.getSession().getAttribute("admin") != null) { %>
+ 	<% if(request.getSession().getAttribute("admin") == null) { %>
+		<a class="list-group-item" href="listarrutas">Buscar Rutas</a>
+		<a class="list-group-item" href="misrutas">Mis Rutas</a>
+		<a class="list-group-item" href="subirRuta">Subir Ruta</a>
+	<% } else { %>	
 		<a class="list-group-item" href="verusuarios">Ver Usuarios</a>
 		<a class="list-group-item" href="actividades">Modificar Actividades</a>
 		<a class="list-group-item" href="estadisticas">Ver estadisticas</a>

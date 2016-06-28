@@ -8,6 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -42,8 +46,7 @@ public class CargarDatos implements ServletContextListener {
      */
     public void contextInitialized(ServletContextEvent sce)  { 
     	 
-		ServletContext contexto = sce.getServletContext(); 
-		
+		ServletContext contexto = sce.getServletContext(); 		
 		this.cargarUsuarios(contexto);
 		this.cargarActividades(contexto);
 		this.cargarRutas(contexto);
@@ -75,7 +78,6 @@ public class CargarDatos implements ServletContextListener {
 				 u.setEmail(usuario[6]);
 				 u.setPassword(usuario[7]);
 				 u.setSexo(Genero.valueOf(usuario[8]));
-				 u.setTipo(TiposUsuario.valueOf(usuario[9]));
 				 
 				 mapaUsuarios.put(u.getUsername(),u);
 				 linea=buffer.readLine();
@@ -135,10 +137,8 @@ public class CargarDatos implements ServletContextListener {
 				 
 				 r.setDistancia(Float.parseFloat(ruta[4]));
 				 r.setDificultad(Dificultad.valueOf(ruta[5]));
-				 r.setActividad(ruta[6]);
 				 r.setTiempoEstimado(new Time(Long.parseLong(ruta[7])));
 				 r.setDueño(usuarios.get(ruta[8]));
-				 r.setFecha(format.parse(ruta[9]));
 				 
 				 mapaRutas.put(r.getNombre(),r);
 				 linea=buffer.readLine();
