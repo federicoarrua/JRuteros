@@ -14,13 +14,13 @@ public class ImagenDAO implements IImagenDAO{
 
 
 	@Override
-	public boolean guardarImagen(Imagen Imagen) {
+	public boolean guardarImagen(Imagen imagen) {
 		try{
 			EntityManager em = EntityHandler.getEntityManager();
 			EntityTransaction etx = em.getTransaction();
 			
 			etx.begin();
-			em.persist(Imagen);
+			em.persist(imagen);
 			etx.commit();
 			
 			em.close();
@@ -61,13 +61,13 @@ public class ImagenDAO implements IImagenDAO{
 	}
 
 	@Override
-	public boolean modificarImagen(Imagen Imagen) {
+	public boolean modificarImagen(Imagen imagen) {
 		try{
 			EntityManager em = EntityHandler.getEntityManager();
 			EntityTransaction etx = em.getTransaction();
 			
 			etx.begin();
-			em.merge(Imagen);
+			em.merge(imagen);
 			etx.commit();
 			
 			em.close();

@@ -59,13 +59,18 @@ public class ActividadDAO implements IActividadDAO{
 		return null;
 	}
 	
+	/**
+	 * Retorna una lista de actividades con el campo tipo igual 
+	 * al pasado por parámetro
+	 * @param tipo
+	 */
 	@Override
-	public Actividad getActividadPorTipo(String tipo) {
+	public List<Actividad> getActividadPorTipo(String tipo) {
 		try{
 			EntityManager em = EntityHandler.getEntityManager();
 			Query q = em.createQuery("SELECT a FROM Actividad a WHERE a.tipo=?1");
 			q.setParameter(1, tipo);
-			Actividad result = (Actividad) q.getResultList().get(0);
+			List<Actividad> result = q.getResultList();
 			return result;
 		}
 		catch(Exception e){

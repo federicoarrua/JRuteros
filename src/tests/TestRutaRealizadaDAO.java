@@ -135,7 +135,7 @@ public class TestRutaRealizadaDAO {
 		ruta.setDescripcion("Ruta descripcion");
 		ruta.setDificultad(Dificultad.DIFICIL);
 		ruta.setDistancia(new Float(2));
-		ruta.setDueño(usr);
+		ruta.setDueno(usr);
 		ruta.setFecha(new Date(1,1,2012));
 		ruta.setFormato(Formato.CIRCULAR);
 		ruta.setNombre("Ruta x");

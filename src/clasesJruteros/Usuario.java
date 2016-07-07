@@ -62,7 +62,7 @@ public class Usuario implements java.io.Serializable{
 	 * Crea una ruta con los parámetros pasados y la almacena en rutasPropias
 	 * En caso de fracaso o de haber ruta con mismo nombre retorna false.
 	 */
-	public Boolean subirRuta(String nombre, String descripción,Privacidad privacidad,Dificultad dificultad,Formato formato,Actividad actividad,Float distancia, Time tiempo,Imagen[] imagenes,Punto[] puntos){
+	public Boolean subirRuta(String nombre, String descripcion,Privacidad privacidad,Dificultad dificultad,Formato formato,Actividad actividad,Float distancia, Time tiempo,Imagen[] imagenes,Punto[] puntos){
 		return true;
 	}
 	

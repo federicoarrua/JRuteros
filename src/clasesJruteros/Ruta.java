@@ -50,7 +50,7 @@ public class Ruta implements java.io.Serializable{
 	@Column(nullable=false)
 	private Date fecha;
 	
-	private Float valoración;
+	private Float valoracion;
 	
 	private Float cantPuntuadores;
 	
@@ -69,7 +69,7 @@ public class Ruta implements java.io.Serializable{
 			)
 	private List<Imagen> imagenesRuta;
 	
-	@OneToMany(cascade=CascadeType.REMOVE)
+	@ManyToMany(cascade=CascadeType.REMOVE)
 	@JoinTable(name="ruta_punto",
 		joinColumns=@JoinColumn(name="ruta_id"),
 		inverseJoinColumns=@JoinColumn(name="punto_id")
@@ -77,15 +77,6 @@ public class Ruta implements java.io.Serializable{
 	private List<Punto> puntosRecorrido;
 	
 	public Ruta(){}
-	
-	/**
-	 * Recorre el archivo al cual apunta la url del atributo 'recorrido'
-	 * y vuelca los puntos del archivo en una lista de puntos.
-	 * @return
-	 */
-	public Boolean volcarPuntos(){
-		return true;
-	}
 	
 	/**
 	 * Agrega un punto al arreglo de puntos del recorrido puntosRecorrido.
@@ -185,7 +176,7 @@ public class Ruta implements java.io.Serializable{
 		return dueno;
 	}
 
-	public void setDueño(Usuario dueno) {
+	public void setDueno(Usuario dueno) {
 		this.dueno = dueno;
 	}
 	public List<Punto> getPuntosRecorrido() {
@@ -201,12 +192,12 @@ public class Ruta implements java.io.Serializable{
 		this.imagenesRuta = imagenesRuta;
 	}
 
-	public Float getValoración() {
-		return valoración;
+	public Float getValoracion() {
+		return valoracion;
 	}
 
-	public void setValoración(Float valoración) {
-		this.valoración = valoración;
+	public void setValoracion(Float valoracion) {
+		this.valoracion = valoracion;
 	}
 
 	public Float getCantPuntuadores() {

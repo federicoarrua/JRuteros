@@ -104,9 +104,69 @@ public class TestRutaDAO {
 			
 		}
 		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testGetPuntosRuta(){
+		try{
+			Ruta ruta = crearRutaPrueba();
+			if(!pruebaRutaDAO.guardarRuta(ruta))
+				fail("Fallo al guardar la Ruta");
+			if(pruebaRutaDAO.getPuntosRuta(ruta.getId()).isEmpty())
+				fail("No recupera los puntos de la ruta");
+		}
+		catch(Exception e){
 			
 		}
-
+	}
+	
+	@Test
+	public void testEliminarRecorrido(){
+		try{
+			Ruta ruta = crearRutaPrueba();
+			if(!pruebaRutaDAO.guardarRuta(ruta))
+				fail("Fallo al guardar la Ruta");
+			if(!pruebaRutaDAO.eliminarRecorrido(ruta.getId()))
+				fail("Falló al eliminar el recorrido de la ruta");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testEliminarPuntoRuta(){
+		try{
+			Ruta ruta = crearRutaPrueba();
+			if(!pruebaRutaDAO.guardarRuta(ruta))
+				fail("Fallo al guardar la Ruta");
+			if(!pruebaRutaDAO.eliminarPuntoRuta(ruta.getId(), ruta.getPuntosRecorrido().get(0).getId()))
+				fail("Falló al eliminar el punto de la ruta");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void agregarPuntoRuta(){
+		try{
+			Ruta ruta = crearRutaPrueba();
+			if(!pruebaRutaDAO.guardarRuta(ruta))
+				fail("Fallo al guardar la Ruta");
+			
+			Punto p = new Punto();
+			p.setLat(new Float(1));
+			p.setLng(new Float(1));
+			
+			if(!pruebaRutaDAO.agregarPuntoRuta(p, ruta.getId()))
+				fail("Falló al agregar el punto a la ruta");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 	
 	public Ruta crearRutaPrueba(){
@@ -144,14 +204,14 @@ public class TestRutaDAO {
 		usr.setUsername("usr test ruta");
 		usrDAO.guardarUsuario(usr);
 		
-		punto1.setLatitud(new Float(10));
-		punto1.setLongitud(new Float(20));
+		punto1.setLat(new Float(10));
+		punto1.setLng(new Float(20));
 		List<Punto> listaPunto = new ArrayList<Punto>();
 		listaPunto.add(punto1);
 		puntoDAO.guardarPunto(punto1);
 		
-		punto2.setLatitud(new Float(100));
-		punto2.setLongitud(new Float(200));
+		punto2.setLat(new Float(100));
+		punto2.setLng(new Float(200));
 		listaPunto.add(punto2);
 		puntoDAO.guardarPunto(punto2);
 		
@@ -159,7 +219,7 @@ public class TestRutaDAO {
 		ruta.setDescripcion("Ruta descripcion");
 		ruta.setDificultad(Dificultad.DIFICIL);
 		ruta.setDistancia(new Float(2));
-		ruta.setDueño(usr);
+		ruta.setDueno(usr);
 		ruta.setFecha(new Date(1,1,2012));
 		ruta.setFormato(Formato.CIRCULAR);
 		ruta.setNombre("Ruta x");

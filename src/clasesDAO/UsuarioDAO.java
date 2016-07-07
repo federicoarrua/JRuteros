@@ -59,13 +59,18 @@ public class UsuarioDAO implements IUsuarioDAO{
 		return null;
 	}
 	
+	/**
+	 * Retorna una lista de usuarios con el mismo username que el
+	 * pasado por parámetro.
+	 * @param username
+	 */
 	@Override
-	public Usuario getUsuarioPorUsername(String username) {
+	public List<Usuario> getUsuarioPorUsername(String username) {
 		try{
 			EntityManager em = EntityHandler.getEntityManager();
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.username=?1");
 			q.setParameter(1, username);
-			Usuario result = (Usuario) q.getResultList().get(0);
+			List<Usuario> result = q.getResultList();
 			return result;
 		}
 		catch(Exception e){

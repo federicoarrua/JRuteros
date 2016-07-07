@@ -55,7 +55,7 @@ public class TestActividadDAO {
 		try{
 			Actividad act = crearActividadPrueba();
 			pruebaActividadDAO.guardarActividad(act);
-			if(pruebaActividadDAO.getActividadPorTipo(act.getTipo()) == null)
+			if(pruebaActividadDAO.getActividadPorTipo(act.getTipo()).isEmpty())
 				fail("No recuperó la actividad");
 		}
 		catch(Exception e){

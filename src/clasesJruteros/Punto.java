@@ -18,24 +18,24 @@ public class Punto implements java.io.Serializable{
 	private Long Id;
 	
 	@Column(nullable=false)
-	private Float latitud;
+	private Float lat;
 	
 	@Column(nullable=false)
-	private Float longitud;
+	private Float lng;
 	
 	public Punto(){}
 	
-	public Float getLatitud() {
-		return latitud;
+	public Float getLat() {
+		return lat;
 	}
-	public void setLatitud(Float latitud) {
-		this.latitud = latitud;
+	public void setLat(Float latitud) {
+		this.lat = latitud;
 	}
-	public Float getLongitud() {
-		return longitud;
+	public Float getLng() {
+		return lng;
 	}
-	public void setLongitud(Float longitud) {
-		this.longitud = longitud;
+	public void setLng(Float longitud) {
+		this.lng = longitud;
 	}
 	public Long getId() {
 		return Id;

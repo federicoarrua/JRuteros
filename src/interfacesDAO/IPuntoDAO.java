@@ -10,4 +10,5 @@ public interface IPuntoDAO {
 	public Punto getPuntoPorId(Long id);
 	public boolean modificarPunto(Punto p);
 	public boolean eliminarPunto(Punto p);
+	public List<Punto> getPuntoPorLugar(Float latitud, Float longitud);
 }

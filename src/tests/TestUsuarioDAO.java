@@ -73,7 +73,7 @@ public class TestUsuarioDAO {
 		try{
 			Usuario usr = crearUsuarioPrueba();
 			pruebaUsuarioDAO.guardarUsuario(usr);
-			if(pruebaUsuarioDAO.getUsuarioPorUsername(usr.getUsername()) == null)
+			if(pruebaUsuarioDAO.getUsuarioPorUsername(usr.getUsername()).isEmpty())
 				fail("No recuperó al usuario");
 		}
 		catch(Exception e){

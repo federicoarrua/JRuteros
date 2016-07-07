@@ -67,7 +67,7 @@ public PuntoDAO pruebaPuntoDAO;
 			Punto punto = crearPuntoPrueba();
 			if(!pruebaPuntoDAO.guardarPunto(punto))
 				fail("No guardó la Punto");
-			punto.setLatitud(new Float(1000));
+			punto.setLat(new Float(1000));
 			if(!pruebaPuntoDAO.modificarPunto(punto))
 				fail("No modificó la Punto");
 		}
@@ -93,10 +93,21 @@ public PuntoDAO pruebaPuntoDAO;
 
 	}
 	
+	@Test
+	public void testGetPuntoPorLugar(){
+		Punto punto = crearPuntoPrueba();
+		if(!pruebaPuntoDAO.guardarPunto(punto))
+			fail("No guardó al Punto");
+		
+		if(pruebaPuntoDAO.getPuntoPorLugar(punto.getLat(), punto.getLng()).isEmpty())
+			fail("No encontro el punto");
+		
+	}
+	
 	public Punto crearPuntoPrueba(){
 		Punto punto = new Punto();
-		punto.setLatitud(new Float(2));
-		punto.setLongitud(new Float(5));
+		punto.setLat(new Float(2));
+		punto.setLng(new Float(5));
 		return punto;
 	}
 	
