@@ -46,22 +46,10 @@ public class RutaResource {
 	@Produces({ MediaType.APPLICATION_JSON })
 	public List<Punto> getPuntos(@PathParam("ruta") Long id) {
 		return rutaDAO.getPuntosRuta(id);
-	}
-	
-	/**
-	 * Metodo DELETE que eliminar todos los puntos del recorrido de la ruta con
-	 * id 'idRuta'
-	 * @param id
-	 */
-	@DELETE
-	@Path("{ruta}")
-	public void deleteRecorrido(@PathParam("ruta") Long id) {
-		rutaDAO.eliminarRecorrido(id);
 	}	
 	
-	
 	/**
-	 * Metodo DELETE que elimina un el punto con id 'idPunto' de la ruta con 
+	 * Metodo DELETE que elimina el punto con id 'idPunto' de la ruta con 
 	 * id 'idRuta'
 	 * @param idRuta
 	 * @param idPunto
@@ -71,8 +59,10 @@ public class RutaResource {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public void deletePuntoRecorrido(@PathParam("ruta") Long idRuta, 
 			@FormParam("id") Long idPunto) {
-		
-		rutaDAO.eliminarPuntoRuta(idRuta,idPunto);
+		if(idPunto!= null)
+			rutaDAO.eliminarPuntoRuta(idRuta,idPunto);
+		else
+			rutaDAO.eliminarRecorrido(idRuta);
 	}
 	
 	
