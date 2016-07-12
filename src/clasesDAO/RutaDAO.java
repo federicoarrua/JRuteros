@@ -116,7 +116,10 @@ public class RutaDAO implements IRutaDAO{
 					+ " r.puntosRecorrido p"
 					+ " WHERE r.Id = ?1");
 			q.setParameter(1, id);
-			List resultList = q.getResultList();
+			
+			@SuppressWarnings("unchecked")
+			List<Punto> resultList = q.getResultList();
+			
 			return resultList;
 		}
 		catch(Exception e){

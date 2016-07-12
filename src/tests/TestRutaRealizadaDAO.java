@@ -106,6 +106,7 @@ public class TestRutaRealizadaDAO {
 
 	}
 	
+	@SuppressWarnings("deprecation")
 	public RutaRealizada crearRutaRealizadaPrueba(){
 		RutaRealizada rutaRealizada = new RutaRealizada();
 		Ruta ruta = new Ruta();

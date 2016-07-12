@@ -70,7 +70,10 @@ public class ActividadDAO implements IActividadDAO{
 			EntityManager em = EntityHandler.getEntityManager();
 			Query q = em.createQuery("SELECT a FROM Actividad a WHERE a.tipo=?1");
 			q.setParameter(1, tipo);
+			
+			@SuppressWarnings("unchecked")
 			List<Actividad> result = q.getResultList();
+			
 			return result;
 		}
 		catch(Exception e){

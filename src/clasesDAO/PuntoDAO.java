@@ -114,7 +114,10 @@ public class PuntoDAO implements IPuntoDAO {
 					+ "WHERE p.lat=?1 AND p.lng=?2");
 			q.setParameter(1,latitud);
 			q.setParameter(2, longitud);
+			
+			@SuppressWarnings("unchecked")
 			List<Punto> resultList = q.getResultList();
+			
 			return resultList;
 		}
 		catch(Exception e){

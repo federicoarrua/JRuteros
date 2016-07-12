@@ -70,7 +70,10 @@ public class UsuarioDAO implements IUsuarioDAO{
 			EntityManager em = EntityHandler.getEntityManager();
 			Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.username=?1");
 			q.setParameter(1, username);
+			
+			@SuppressWarnings("unchecked")
 			List<Usuario> result = q.getResultList();
+			
 			return result;
 		}
 		catch(Exception e){

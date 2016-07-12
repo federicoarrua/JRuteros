@@ -169,6 +169,7 @@ public class TestRutaDAO {
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Ruta crearRutaPrueba(){
 		Ruta ruta = new Ruta();
 		Actividad a = new Actividad();

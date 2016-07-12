@@ -110,6 +110,7 @@ public class TestUsuarioDAO {
 
 	}
 	
+	@SuppressWarnings("deprecation")
 	public Usuario crearUsuarioPrueba(){
 		Usuario usr = new Usuario();
 		usr.setApellido("apellido");

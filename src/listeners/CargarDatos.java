@@ -10,10 +10,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -132,7 +128,6 @@ public class CargarDatos implements ServletContextListener {
 			 InputStream rutas = contexto.getResourceAsStream(contexto.getInitParameter("rutas"));
 			 BufferedReader buffer = new BufferedReader(new InputStreamReader(rutas));
 			 HashMap<String,Ruta> mapaRutas = new HashMap<String,Ruta>();
-			 SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			 String linea = buffer.readLine();
 
 			 @SuppressWarnings("unchecked")
@@ -161,6 +156,7 @@ public class CargarDatos implements ServletContextListener {
 		 }
     }
     
+	@SuppressWarnings("deprecation")
 	public Ruta crearRutaPrueba(){
 		Ruta ruta = new Ruta();
 		Actividad a = new Actividad();
