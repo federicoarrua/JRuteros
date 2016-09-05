@@ -3,8 +3,8 @@ package clasesJruteros;
 import javax.persistence.*;
 
 /**
- * Actividad: clase Actividad según especificación del modelo JRuteros.
- * @author Federico Arrúa
+ * Actividad: clase Actividad segun especificacion del modelo JRuteros.
+ * @author Federico Arrua
  *
  */
 @SuppressWarnings("serial")

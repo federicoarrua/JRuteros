@@ -122,5 +122,17 @@ public class UsuarioDAO implements IUsuarioDAO{
 		}
 		return false;
 	}
-
+	
+	public boolean validarUsuario(String username,String password) {
+		try{
+			Usuario u = this.getUsuarioPorUsername(username).get(0);
+			if(u.getPassword().equals(password) && u.getEnable())
+				return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

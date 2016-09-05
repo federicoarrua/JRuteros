@@ -22,7 +22,7 @@ public class Usuario implements java.io.Serializable{
 	@Column(name="usuario_id")
 	private Long Id;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	private String username;
 	
 	@Column(nullable=false)
@@ -34,22 +34,25 @@ public class Usuario implements java.io.Serializable{
 	@Column(nullable=false)
 	private String nombres;
 	
-	@Column(nullable=false)
+	@Column
 	private String domicilio;
 	
 	@Column(nullable=false)
 	private Date fechaNac;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	private String email;
 	
 	@Column(nullable=false)
 	private String password;
 	
-	@Column(nullable=false)
+	@Column
 	@Enumerated(EnumType.STRING)
 	private Genero sexo;
 	
+	@Column
+	private Boolean enable;
+
 	@OneToMany(mappedBy="dueno")
 	private List<Ruta> rutasPropias;
 	
@@ -197,5 +200,13 @@ public class Usuario implements java.io.Serializable{
 
 	public void setId(Long id) {
 		Id = id;
+	}
+	
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
 }

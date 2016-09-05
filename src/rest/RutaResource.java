@@ -50,7 +50,7 @@ public class RutaResource {
 	
 	/**
 	 * Metodo DELETE que elimina el punto con id 'idPunto' de la ruta con 
-	 * id 'idRuta'
+	 * id 'idRuta'. Si 'id' es null elimina todos los puntos de la ruta
 	 * @param idRuta
 	 * @param idPunto
 	 */

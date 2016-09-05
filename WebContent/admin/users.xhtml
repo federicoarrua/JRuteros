@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+<head>
+	<link href="/jruteros/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<script src="/jruteros/bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/jruteros/bootstrap/js/bootstrap.js"></script>
+	<script src="/jruteros/bootstrap/data table/js/jquery.dataTables.js"></script>
+	<script src="/jruteros/bootstrap/data table/js/dataTables.bootstrap.js"></script>
+	<link href="/jruteros/bootstrap/data table/css/dataTables.bootstrap.css" rel="stylesheet" />
+	<script>$(document).ready(function() {
+		$('table').dataTable({bInfo: false});
+		$('#sort').dataTable();
+	});</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>JRuteros - Usuarios</title>
+</head>
+<body background="/jruteros/images/background.jpg">
+	<ui:include src="adminmenus.xhtml"></ui:include>
+	<div class="col-md-8">
+		<table id="sort" class="table table-condensed">
+			<thead>
+				<tr>
+					<td>Usuario</td>
+					<td class="text-center">Nombre</td>
+					<td class="text-center">Apellido</td>
+					<td class="text-center">E-mail</td>
+					<td class="text-center">Fecha de Nacimiento</td>
+					<td data-sortable="false" class="text-center">Habilitar/Deshabilitar</td>
+				</tr>
+			</thead>
+			<tbody>
+				<ui:repeat var="user" value="#{usersBean.users}">
+					<tr>
+						<td><a href="#"></a>#{user.username}</td>						
+						<td class="text-center">#{user.nombres}</td>
+						<td class="text-center">#{user.apellido}</td>
+						<td class="text-center">#{user.email}</td>
+						<td class="text-center">		
+							<h:outputText value="#{user.fechaNac}" >
+								<f:convertDateTime pattern="d/M/yyyy" />
+							</h:outputText>
+						</td>
+						<h:form id="disableForm" rendered="#{user.enable eq true}">
+							<td class="text-center"><h:commandButton value="Deshabilitar" class="btn btn-xs btn-warning" action="#{usersBean.enable(user.id)}"/></td>
+						</h:form>
+						<h:form id="enableForm" rendered="#{user.enable eq false}">
+							<td class="text-center"><h:commandButton value="Habilitar" class="btn btn-xs btn-default" action="#{usersBean.enable(user.id)}"/></td>
+						</h:form>
+					</tr>
+				</ui:repeat>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

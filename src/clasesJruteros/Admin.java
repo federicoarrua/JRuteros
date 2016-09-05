@@ -17,13 +17,13 @@ public class Admin implements java.io.Serializable{
 	@Column(name="admin_id")
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	private String username;
 	
 	@Column(nullable=false)
 	private String password;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,unique=true)
 	private String mail;
 	
 	public Admin(){}

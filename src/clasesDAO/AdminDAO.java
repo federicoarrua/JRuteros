@@ -99,5 +99,34 @@ public class AdminDAO implements IAdminDAO{
 		}
 		return false;
 	}
+	
+	public List<Admin> getAdminPorUsername(String username) {
+		try{
+			EntityManager em = EntityHandler.getEntityManager();
+			Query q = em.createQuery("SELECT a FROM Admin a WHERE a.username=?1");
+			q.setParameter(1, username);
+			
+			@SuppressWarnings("unchecked")
+			List<Admin> result = q.getResultList();
+			
+			return result;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public boolean validarAdmin(String username,String password) {
+		try{
+			Admin a = this.getAdminPorUsername(username).get(0);
+			if(a.getPassword().equals(password))
+				return true;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }

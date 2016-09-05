@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+	<link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<script src="bootstrap/js/jquery.min.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="bootstrap/js/datepicker.min.js"></script>
+	<link rel="stylesheet" href="bootstrap/css/datepicker.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<script> //Script para el datepicker
+	    $(document).ready(function(){
+	        var date_input=$('#modifyForm\\:date'); 
+	        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+	        date_input.datepicker({
+	            format: 'dd/mm/yyyy',
+	            container: container,
+	            todayHighlight: true,
+	            autoclose: true,
+	            endDate: new Date,
+	            language:"es",
+	            startView: 2,
+	        })
+	    })
+	</script>
+	<title>JRuteros - Modificar datos</title>
+</head>
+<body background="images/background.jpg">
+	<ui:include src="loggedmenus.xhtml"></ui:include>
+	<div class="col-md-10 col-xs-9">
+		<h3>Modificar tus datos</h3>
+		<h:form id="modifyForm">
+            <table>
+                <tr>
+                    <td><h:inputText id="username" value="#{loginBean.usuario.username}" class="form-control" a:placeholder="Nombre de Usuario"
+                            required="true" requiredMessage="Ingresar nombre de usuario" validatorMessage="Username menor a 5 caracteres">
+                            <f:validateLength minimun="5"/></h:inputText></td>
+                    <td><h:message for="username" style="color:red" /></td>
+                </tr>            
+                <tr>
+                    <td><h:inputText id="nombre" value="#{loginBean.usuario.nombres}" class="form-control" a:placeholder="Nombre"
+                            required="true" requiredMessage="Ingresar nombre" /></td>
+                    <td><h:message for="nombre" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:inputText id="apellido" value="#{loginBean.usuario.apellido}" class="form-control" a:placeholder="Apellido"
+                            required="true" requiredMessage="Ingresar apellido" /></td>
+                    <td><h:message for="apellido" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:inputText id="domicilio" value="#{loginBean.usuario.domicilio}" class="form-control" a:placeholder="Domicilio"
+                            /></td>
+                    <td><h:message for="domicilio" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:inputText id="email" value="#{loginBean.usuario.email}" class="form-control" a:placeholder="E-Mail"
+                            required="true" requiredMessage="Ingresar e-mail"  validatorMessage="Email invalido">
+                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                    	</h:inputText>        
+                    </td>
+                    	
+                    <td><h:message for="email" style="color:red" /></td>
+                </tr>
+                <tr>
+                	<td><h:selectOneMenu id="sexo" value="#{loginBean.usuario.sexo}" class="form-control" required="true"
+                		requiredMessage="Elegir sexo">
+    					<f:selectItem itemValue="" itemLabel="--Sexo--" />
+    					<f:selectItems value="#{generoBean.generos}" />
+					</h:selectOneMenu></td>
+					<td><h:message for="sexo" style="color:red" /></td>
+                </tr>
+                <tr>
+                    <td><h:inputText id="dni" value="#{loginBean.usuario.dni}" class="form-control" a:placeholder="DNI"
+                            required="true" requiredMessage="Ingresar DNI" converterMessage="Ingresar solo digitos" /></td>
+                    <td><h:message for="dni" style="color:red" /></td>
+                </tr>
+                <tr>
+                	<td>
+                		<h:inputText id="date" value="#{loginBean.usuario.fechaNac}" class="form-control" a:placeholder="DD/MM/YY"
+                				required="true" requiredMessage="Ingresar fecha de nacimiento"  >
+                			<f:convertDateTime type="date" pattern="d/M/yyyy"/>
+                		</h:inputText>
+                	</td>       
+                </tr>
+                <tr>
+                    <td><h:commandButton id="button" value="Editar Datos" class="btn btn-default" action="#{loginBean.modify}" /></td>
+                	<td><h:messages  for="button" infoStyle="color:darkgreen" errorStyle="color:darkred" /></td>
+                </tr>
+            </table>
+        </h:form>
+	</div>
+</body>
+</html>
